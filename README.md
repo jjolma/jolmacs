@@ -5,3 +5,4 @@ This is my emacs setup.
 * add my color theme
 * apple command key support
 * git support
+* open up in full screen
