@@ -1,4 +1,4 @@
-;; Turn off mouse interface early in startup to avoid momentary display
+˘;; Turn off mouse interface early in startup to avoid momentary display
 ;; You really don't need these; trust me.
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -64,6 +64,12 @@
 
 (add-to-list 'auto-mode-alist '("\\.otl$" . outline-mode))
 
+;; full screen
+(defun maximize-frame () 
+  (interactive)
+  (set-frame-position (selected-frame) 0 0)
+  (set-frame-size (selected-frame) 1000 1000))
+(maximize-frame)
 
 ;; disable verticle scroll bar
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -74,3 +80,5 @@
 ;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 ;; (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 ;; (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+
