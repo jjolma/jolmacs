@@ -76,3 +76,9 @@
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
+
+
+;;
+;; Git
+;;
+(global-set-key (kbd "C-x g") 'magit-status)
