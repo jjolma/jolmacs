@@ -4,6 +4,8 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
+(setq source-dir (or (getenv "SOURCE_DIR") "~/depot/web2"))
+
 ;; 
 ;; Load paths
 ;;
@@ -101,11 +103,15 @@
 ;; mini-buffer
 (define-key minibuffer-local-map "\t" 'hippie-expand)
 
-;;; mistakes
+;; mistakes
 (global-set-key "\C-xf"     'find-file) 
 (global-set-key "\C-x\C-f"  'find-file)
 (global-set-key "\C-xs"     'save-buffer)
 (global-set-key "\C-x\C-s"  'save-buffer)
 
+;; nice for grep-find
+(global-set-key [M-up]      'previous-error)
+(global-set-key [M-down]    'next-error)
 
-
+;; grep-find
+(setq grep-find-command (format "find %s '(' -name '*.rb' -o -name '*.erb' ')' -type f -print | xargs grep -n -s -F " source-dir))
