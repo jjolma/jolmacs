@@ -56,7 +56,7 @@
 (color-theme-jpj)
 
 
-
+(add-to-list 'auto-mode-alist '("\\.otl$" . outline-mode))
 
 
 ;; TODO try

@@ -3,6 +3,5 @@ This is my emacs setup. Most of this is stolen from [the Emacs Starter Kit](http
 
 # TODO
 * apple command key support
-* outline-mode for *.otl
 * git support
 * open up in full screen
