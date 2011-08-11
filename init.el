@@ -70,3 +70,9 @@
   (set-frame-position (selected-frame) 0 0)
   (set-frame-size (selected-frame) 1000 1000))
 (maximize-frame)
+
+;; Use Command key as Meta.  http://www.emacswiki.org/emacs/MetaKeyProblems
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
