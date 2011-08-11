@@ -82,3 +82,30 @@
 ;; Git
 ;;
 (global-set-key (kbd "C-x g") 'magit-status)
+
+
+;;
+;; Miscellaneous configs
+;;
+(setq inhibit-startup-message t)
+
+
+;;
+;; Key bindings
+;;
+(global-set-key "\C-c\C-c"  'comment-region)  
+(global-set-key "\C-c\C-u"  'uncomment-region)
+(global-set-key "\C-x\C-b"      'electric-buffer-list)
+(global-set-key "\M-g"          'goto-line)
+
+;; mini-buffer
+(define-key minibuffer-local-map "\t" 'hippie-expand)
+
+;;; mistakes
+(global-set-key "\C-xf"     'find-file) 
+(global-set-key "\C-x\C-f"  'find-file)
+(global-set-key "\C-xs"     'save-buffer)
+(global-set-key "\C-x\C-s"  'save-buffer)
+
+
+
