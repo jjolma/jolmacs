@@ -115,6 +115,7 @@
 
 ;; grep-find
 (setq grep-find-command (format "find %s '(' -name '*.rb' -o -name '*.feature' ')' -type f -print | xargs grep -n -s -F " source-dir))
+(global-set-key [f8] 'grep-find)
 (put 'downcase-region 'disabled nil)
 
 ;; feature-mode
