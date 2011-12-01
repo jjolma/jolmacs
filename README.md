@@ -3,3 +3,12 @@ This is my emacs setup. Most of this is stolen from [the Emacs Starter Kit](http
 
 # TODO
 * java-mode - 4 spaces per tab
+* turn on column-mode by default
+* use ruby-mode on Gemfiles
+* shortcut for grep-find
+* tab complete
+* map ctl-z to scroll down, not minimize window
+* remove trailing whitespace
+* ruby-mode with Rakefile
+* markdown mode
+

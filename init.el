@@ -114,9 +114,11 @@
 (global-set-key [M-down]    'next-error)
 
 ;; grep-find
-(setq grep-find-command (format "find %s '(' -name '*.rb' -o -name '*.erb' ')' -type f -print | xargs grep -n -s -F " source-dir))
+(setq grep-find-command (format "find %s '(' -name '*.rb' -o -name '*.feature' ')' -type f -print | xargs grep -n -s -F " source-dir))
 (put 'downcase-region 'disabled nil)
 
 ;; feature-mode
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+
+(add-to-list 'auto-mode-alist '("\.yml$" . yaml-mode))
