@@ -127,5 +127,10 @@
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 
 (setq column-number-mode t)
+
+(eval-after-load "ediff"
+  '(setq ediff-split-window-function 'split-window-horizontally))
+(put 'upcase-region 'disabled nil)
