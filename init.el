@@ -118,6 +118,12 @@
 (global-set-key [f8] 'grep-find)
 (put 'downcase-region 'disabled nil)
 
+(global-set-key [f5] 'revert-buffer)
+
+(global-set-key "\C-s"  'isearch-forward-regexp)
+(global-set-key "\C-r"  'isearch-forward-regexp)
+
+
 ;; feature-mode
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
@@ -134,3 +140,53 @@
 (eval-after-load "ediff"
   '(setq ediff-split-window-function 'split-window-horizontally))
 (put 'upcase-region 'disabled nil)
+
+;; (defun clever-hippie-tab (arg)
+;;   "Ordinary tab or dabbrev"
+;;   (interactive "*P")
+;;   (message "hi")
+;;   (cond
+;;    ((and transient-mark-mode mark-active)
+;;     (indent-region (region-beginning) (region-end) nil))
+;;    ((and (eq (char-syntax (preceding-char)) ?w)
+;;          (not (= (current-column) 0)))
+;;     (hippie-expand arg))
+;;    (t (indent-for-tab-command))))
+
+;; (global-set-key "\t"          'clever-hippie-tab)
+
+
+
+;; Add a hook to ruby-mode to modify ruby-mode-map
+;; ;;;###autoload
+;; (eval-after-load 'ruby-mode
+;;   '(add-hook 'ruby-mode-hook 'inf-ruby-keys))
+
+;; (defun jpj-ruby-setup ()
+;;   (message "DONK")
+;;   (define-key ruby-mode-map "TAB" 'clever-hippie-tab))
+
+;;(eval-after-load 'ruby-mode
+;; '(add-hook 'ruby-mode-hook 'jpj-ruby-setup))
+
+;; (require 'ruby-mode)
+;; (add-hook 'ruby-mode-hook
+;; 	  (lambda ()
+;; 	    (message "JPJ in hook")
+;; 	    (define-key ruby-mode-map "TAB" 'clever-hippie-tab)))
+
+
+;; (add-hook 'ruby-mode-hook
+;;           (lambda ()
+;;             (local-set-key (kbd "C-c ,f") 'feature-verify-all-scenarios-in-project)))
+
+
+
+(define-generic-mode 'blue-text-mode
+  nil
+  nil
+  '(("^\\([^\\$]*\\)$" 1 'font-lock-keyword-face))
+  nil
+  nil
+  "Simple mode for blue text.")
+
