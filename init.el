@@ -16,21 +16,15 @@
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
 
 
-;;
-;; Elpa
-;;
-(setq package-user-dir (concat dotfiles-dir "elpa"))
-
-(require 'package)
-(dolist (source '(("marmalade" . "http://marmalade-repo.org/packages/")
-                  ("elpa" . "http://tromey.com/elpa/")))
-  (add-to-list 'package-archives source t))
-(package-initialize)
-(require 'starter-kit-elpa)
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
-
-
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0") 
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/themes")
+(require 'color-theme)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-hober)))
 (autoload 'color-theme-select "color-theme" "color-theme" t)
+
 
 ;;
 ;; Color theme
@@ -124,9 +118,6 @@
 (global-set-key "\C-r"  'isearch-forward-regexp)
 
 
-;; feature-mode
-(require 'feature-mode)
-(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 (add-to-list 'auto-mode-alist '("\.yml$" . yaml-mode))
 
@@ -141,19 +132,23 @@
   '(setq ediff-split-window-function 'split-window-horizontally))
 (put 'upcase-region 'disabled nil)
 
-;; (defun clever-hippie-tab (arg)
-;;   "Ordinary tab or dabbrev"
-;;   (interactive "*P")
-;;   (message "hi")
-;;   (cond
-;;    ((and transient-mark-mode mark-active)
-;;     (indent-region (region-beginning) (region-end) nil))
-;;    ((and (eq (char-syntax (preceding-char)) ?w)
-;;          (not (= (current-column) 0)))
-;;     (hippie-expand arg))
-;;    (t (indent-for-tab-command))))
+(defun clever-hippie-tab (arg)
+  "Ordinary tab or dabbrev"
+  (interactive "*P")
+  (cond
+   ((and transient-mark-mode mark-active)
+    (indent-region (region-beginning) (region-end) nil))
+   ((and (eq (char-syntax (preceding-char)) ?w)
+         (not (= (current-column) 0)))
+    (hippie-expand arg))
+   (t (indent-for-tab-command))))
 
-;; (global-set-key "\t"          'clever-hippie-tab)
+(global-set-key "\t"          'clever-hippie-tab)
+
+(defun my-find-file-hook ()
+  (local-set-key "\t" 'clever-hippie-tab)
+  )
+(add-hook 'find-file-hooks 'my-find-file-hook)
 
 
 
