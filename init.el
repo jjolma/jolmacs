@@ -6,7 +6,7 @@
 
 (setq source-dir (or (getenv "SOURCE_DIR") "~/depot/web2"))
 
-;; 
+;;
 ;; Load paths
 ;;
 (setq dotfiles-dir (file-name-directory
@@ -16,7 +16,7 @@
 (add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
 
 
-(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0") 
+(add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0/themes")
 (require 'color-theme)
 (eval-after-load "color-theme"
@@ -37,13 +37,13 @@
       (foreground-color . "white")
       (cursor-color     . "yellow")
       (background-mode  . dark))
-     
+
      (default      ((t (nil))))
      (fringe       ((t (                    :background "grey20"))))
      (modeline     ((t (:foreground "white" :background "darkslateblue"))))
      (region       ((t (                    :background "midnight blue"))))
      (highlight    ((t (                    :background "#13385b"))))
-     
+
      (font-lock-builtin-face       ((t (:foreground "cornflower blue"))))
      (font-lock-comment-face       ((t (:foreground "green"))))
      (font-lock-doc-face           ((t (:foreground "green"))))
@@ -61,7 +61,7 @@
 (add-to-list 'auto-mode-alist '("\\.otl$" . outline-mode))
 
 ;; full screen
-(defun maximize-frame () 
+(defun maximize-frame ()
   (interactive)
   (set-frame-position (selected-frame) 0 0)
   (set-frame-size (selected-frame) 1000 1000))
@@ -89,7 +89,7 @@
 ;;
 ;; Key bindings
 ;;
-(global-set-key "\C-c\C-c"  'comment-region)  
+(global-set-key "\C-c\C-c"  'comment-region)
 (global-set-key "\C-c\C-u"  'uncomment-region)
 (global-set-key "\C-x\C-b"      'electric-buffer-list)
 (global-set-key "\M-g"          'goto-line)
@@ -98,7 +98,7 @@
 (define-key minibuffer-local-map "\t" 'hippie-expand)
 
 ;; mistakes
-(global-set-key "\C-xf"     'find-file) 
+(global-set-key "\C-xf"     'find-file)
 (global-set-key "\C-x\C-f"  'find-file)
 (global-set-key "\C-xs"     'save-buffer)
 (global-set-key "\C-x\C-s"  'save-buffer)
@@ -118,7 +118,8 @@
 (global-set-key "\C-r"  'isearch-forward-regexp)
 
 
-
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\.yml$" . yaml-mode))
 
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
@@ -185,3 +186,7 @@
   nil
   "Simple mode for blue text.")
 
+;; delete trailing whitespace
+(add-hook 'ruby-mode-hook
+	  (lambda ()
+	    (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
